@@ -1,0 +1,2225 @@
+{
+  "version": 1,
+  "layout": {
+    "components": [
+      {
+        "id": "centrale",
+        "name": "Centrale électrique",
+        "kind": "building",
+        "category": "Énergie",
+        "si": false,
+        "description": "Production et distribution électrique de la ville (SCADA).",
+        "footprint": {
+          "x": -10,
+          "y": -10,
+          "w": 170,
+          "d": 150,
+          "h": 50
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Production": "2,4 MW",
+          "Charge réseau": "68 %",
+          "Température": "41 °C",
+          "Uptime": "99,97 %"
+        },
+        "actions": [
+          {
+            "id": "shed",
+            "label": "Délester le quartier Nord",
+            "critical": true
+          },
+          {
+            "id": "restart",
+            "label": "Redémarrer le service",
+            "effect": {
+              "key": "service",
+              "value": "redémarrage"
+            }
+          },
+          {
+            "id": "isolate",
+            "label": "Isoler du réseau SI",
+            "critical": true
+          },
+          {
+            "id": "audit",
+            "label": "Lancer un audit de logs"
+          }
+        ],
+        "lights": [
+          {
+            "id": "l1",
+            "name": "Éclairage principal"
+          }
+        ]
+      },
+      {
+        "id": "tribunal",
+        "name": "Tribunal",
+        "kind": "building",
+        "category": "Civique",
+        "si": true,
+        "footprint": {
+          "x": 270,
+          "y": 300,
+          "w": 150,
+          "d": 70,
+          "h": 45
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Postes connectés": "18",
+          "Latence": "12 ms",
+          "Uptime": "99,2 %"
+        },
+        "actions": [
+          {
+            "id": "restart",
+            "label": "Redémarrer le service",
+            "effect": {
+              "key": "service",
+              "value": "redémarrage"
+            }
+          },
+          {
+            "id": "isolate",
+            "label": "Isoler du réseau SI",
+            "critical": true
+          },
+          {
+            "id": "audit",
+            "label": "Lancer un audit de logs"
+          }
+        ],
+        "lights": [
+          {
+            "id": "l1",
+            "name": "Éclairage principal"
+          }
+        ]
+      },
+      {
+        "id": "banque",
+        "name": "Banque",
+        "kind": "building",
+        "category": "Finance",
+        "si": true,
+        "description": "Agence bancaire",
+        "footprint": {
+          "x": 440,
+          "y": 280,
+          "w": 150,
+          "d": 70,
+          "h": 52
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Transactions": "Normales",
+          "IDS": "RAS",
+          "Uptime": "92,4 %"
+        },
+        "actions": [
+          {
+            "id": "restart",
+            "label": "Redémarrer le service",
+            "effect": {
+              "key": "service",
+              "value": "redémarrage"
+            }
+          },
+          {
+            "id": "isolate",
+            "label": "Isoler du réseau SI",
+            "critical": true
+          },
+          {
+            "id": "audit",
+            "label": "Lancer un audit de logs"
+          }
+        ],
+        "lights": [
+          {
+            "id": "l1",
+            "name": "Éclairage principal"
+          }
+        ]
+      },
+      {
+        "id": "police",
+        "name": "Commissariat",
+        "kind": "building",
+        "category": "Sécurité",
+        "si": true,
+        "footprint": {
+          "x": 490,
+          "y": 430,
+          "w": 160,
+          "d": 130,
+          "h": 45
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Caméras actives": "12 / 12",
+          "Latence": "9 ms",
+          "Uptime": "99,8 %"
+        },
+        "actions": [
+          {
+            "id": "restart",
+            "label": "Redémarrer le service",
+            "effect": {
+              "key": "service",
+              "value": "redémarrage"
+            }
+          },
+          {
+            "id": "isolate",
+            "label": "Isoler du réseau SI",
+            "critical": true
+          },
+          {
+            "id": "audit",
+            "label": "Lancer un audit de logs"
+          }
+        ],
+        "poly": [
+          {
+            "x": 490,
+            "y": 460
+          },
+          {
+            "x": 540,
+            "y": 460
+          },
+          {
+            "x": 630,
+            "y": 430
+          },
+          {
+            "x": 650,
+            "y": 480
+          },
+          {
+            "x": 550,
+            "y": 510
+          },
+          {
+            "x": 550,
+            "y": 560
+          },
+          {
+            "x": 490,
+            "y": 560
+          },
+          {
+            "x": 490,
+            "y": 510
+          }
+        ],
+        "lights": [
+          {
+            "id": "l1",
+            "name": "Éclairage principal"
+          }
+        ]
+      },
+      {
+        "id": "pompiers",
+        "name": "Caserne ",
+        "kind": "building",
+        "category": "Secours",
+        "si": true,
+        "footprint": {
+          "x": 640,
+          "y": 610,
+          "w": 80,
+          "d": 120,
+          "h": 40
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Véhicules prêts": "3 / 3",
+          "Alarme": "Repos",
+          "Uptime": "99,9 %"
+        },
+        "actions": [
+          {
+            "id": "alarm",
+            "label": "Déclencher l'alarme",
+            "critical": true
+          },
+          {
+            "id": "restart",
+            "label": "Redémarrer le service",
+            "effect": {
+              "key": "service",
+              "value": "redémarrage"
+            }
+          },
+          {
+            "id": "isolate",
+            "label": "Isoler du réseau SI",
+            "critical": true
+          },
+          {
+            "id": "audit",
+            "label": "Lancer un audit de logs"
+          }
+        ],
+        "lights": [
+          {
+            "id": "l1",
+            "name": "Éclairage principal"
+          }
+        ]
+      },
+      {
+        "id": "mairie",
+        "name": "Mairie",
+        "kind": "building",
+        "category": "Civique",
+        "si": true,
+        "footprint": {
+          "x": 240,
+          "y": 600,
+          "w": 180,
+          "d": 130,
+          "h": 50
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Postes connectés": "24",
+          "Latence": "11 ms",
+          "Uptime": "99,5 %"
+        },
+        "actions": [
+          {
+            "id": "restart",
+            "label": "Redémarrer le service",
+            "effect": {
+              "key": "service",
+              "value": "redémarrage"
+            }
+          },
+          {
+            "id": "isolate",
+            "label": "Isoler du réseau SI",
+            "critical": true
+          },
+          {
+            "id": "audit",
+            "label": "Lancer un audit de logs"
+          }
+        ],
+        "lights": [
+          {
+            "id": "l1",
+            "name": "Éclairage principal"
+          }
+        ]
+      },
+      {
+        "id": "bibliotheque",
+        "name": "Bibliothèque",
+        "kind": "building",
+        "category": "Culture",
+        "si": false,
+        "footprint": {
+          "x": 240,
+          "y": 750,
+          "w": 180,
+          "d": 80,
+          "h": 38
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Bornes publiques": "6",
+          "Wi-Fi public": "Actif",
+          "Uptime": "99,1 %"
+        },
+        "actions": [
+          {
+            "id": "restart",
+            "label": "Redémarrer le service",
+            "effect": {
+              "key": "service",
+              "value": "redémarrage"
+            }
+          },
+          {
+            "id": "isolate",
+            "label": "Isoler du réseau SI",
+            "critical": true
+          },
+          {
+            "id": "audit",
+            "label": "Lancer un audit de logs"
+          }
+        ],
+        "lights": [
+          {
+            "id": "l1",
+            "name": "Éclairage principal"
+          }
+        ]
+      },
+      {
+        "id": "commerces-est-a",
+        "name": "",
+        "kind": "building",
+        "category": "Commerce",
+        "footprint": {
+          "x": 920,
+          "y": 80,
+          "w": 55,
+          "d": 170,
+          "h": 26
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Boutiques": "4",
+          "Conso élec.": "6,1 kW"
+        },
+        "actions": [
+          {
+            "id": "on",
+            "label": "Allumer",
+            "effect": {
+              "key": "on",
+              "value": true
+            }
+          },
+          {
+            "id": "off",
+            "label": "Éteindre",
+            "effect": {
+              "key": "on",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "commerces-est-b",
+        "name": "",
+        "kind": "building",
+        "category": "Commerce",
+        "footprint": {
+          "x": 920,
+          "y": 290,
+          "w": 55,
+          "d": 170,
+          "h": 26
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Boutiques": "4",
+          "Conso élec.": "5,4 kW"
+        },
+        "actions": [
+          {
+            "id": "on",
+            "label": "Allumer",
+            "effect": {
+              "key": "on",
+              "value": true
+            }
+          },
+          {
+            "id": "off",
+            "label": "Éteindre",
+            "effect": {
+              "key": "on",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "commerces-sud-a",
+        "name": "",
+        "kind": "building",
+        "category": "Commerce",
+        "footprint": {
+          "x": 0,
+          "y": 920,
+          "w": 160,
+          "d": 65,
+          "h": 26
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Boutiques": "6",
+          "Conso élec.": "7,8 kW"
+        },
+        "actions": [
+          {
+            "id": "on",
+            "label": "Allumer",
+            "effect": {
+              "key": "on",
+              "value": true
+            }
+          },
+          {
+            "id": "off",
+            "label": "Éteindre",
+            "effect": {
+              "key": "on",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "commerces-sud-b",
+        "name": "",
+        "kind": "building",
+        "category": "Commerce",
+        "footprint": {
+          "x": 230,
+          "y": 920,
+          "w": 160,
+          "d": 75,
+          "h": 26
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Boutiques": "5",
+          "Conso élec.": "6,9 kW"
+        },
+        "actions": [
+          {
+            "id": "on",
+            "label": "Allumer",
+            "effect": {
+              "key": "on",
+              "value": true
+            }
+          },
+          {
+            "id": "off",
+            "label": "Éteindre",
+            "effect": {
+              "key": "on",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "commerces-sud-c",
+        "name": "",
+        "kind": "building",
+        "category": "Commerce",
+        "footprint": {
+          "x": 450,
+          "y": 920,
+          "w": 170,
+          "d": 55,
+          "h": 26
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Boutiques": "6",
+          "Conso élec.": "8,4 kW"
+        },
+        "actions": [
+          {
+            "id": "on",
+            "label": "Allumer",
+            "effect": {
+              "key": "on",
+              "value": true
+            }
+          },
+          {
+            "id": "off",
+            "label": "Éteindre",
+            "effect": {
+              "key": "on",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "parking-ouest",
+        "name": "Parking Ouest",
+        "kind": "parking",
+        "category": "Mobilité",
+        "footprint": {
+          "x": 30,
+          "y": 580,
+          "w": 170,
+          "d": 165,
+          "h": 0
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Occupation": "34 / 60",
+          "Barrière": "P-O-BAR"
+        },
+        "actions": []
+      },
+      {
+        "id": "parking-ne",
+        "name": "Parking Nord-Est",
+        "kind": "parking",
+        "category": "Mobilité",
+        "footprint": {
+          "x": 650,
+          "y": 250,
+          "w": 180,
+          "d": 100,
+          "h": 0
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Occupation": "58 / 80",
+          "Barrière": "P-NE-BAR"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-4tnwl",
+        "name": "ESNA",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 612,
+          "y": -28,
+          "w": 136,
+          "d": 136,
+          "h": 80
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": [],
+        "si": true,
+        "poly": [
+          {
+            "x": 662,
+            "y": -28
+          },
+          {
+            "x": 748,
+            "y": 22
+          },
+          {
+            "x": 698,
+            "y": 108
+          },
+          {
+            "x": 612,
+            "y": 58
+          }
+        ],
+        "lights": [
+          {
+            "id": "l1",
+            "name": "Éclairage principal"
+          }
+        ]
+      },
+      {
+        "id": "bat-4c9sk",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 230,
+          "y": 300,
+          "w": 40,
+          "d": 140,
+          "h": 40
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-4tle9",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 503,
+          "y": 63,
+          "w": 84,
+          "d": 94,
+          "h": 40
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": [],
+        "poly": [
+          {
+            "x": 503,
+            "y": 88
+          },
+          {
+            "x": 548,
+            "y": 63
+          },
+          {
+            "x": 587,
+            "y": 132
+          },
+          {
+            "x": 542,
+            "y": 157
+          }
+        ]
+      },
+      {
+        "id": "bat-94lyk",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 272,
+          "y": 200,
+          "w": 86,
+          "d": 88,
+          "h": 40
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": [],
+        "poly": [
+          {
+            "x": 358,
+            "y": 270
+          },
+          {
+            "x": 290,
+            "y": 288
+          },
+          {
+            "x": 272,
+            "y": 220
+          },
+          {
+            "x": 340,
+            "y": 200
+          }
+        ]
+      },
+      {
+        "id": "parc-rjs92",
+        "name": "Parking",
+        "kind": "parking",
+        "category": "Mobilité",
+        "footprint": {
+          "x": 440,
+          "y": 250,
+          "w": 150,
+          "d": 30,
+          "h": 0
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Occupation": "0 / 40"
+        },
+        "actions": []
+      },
+      {
+        "id": "bar-sytei",
+        "name": "Nouvelle barrière",
+        "kind": "barrier",
+        "category": "Mobilité",
+        "point": {
+          "x": 580,
+          "y": 270
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Badgeuse": "OK"
+        },
+        "actions": [
+          {
+            "id": "open",
+            "label": "Ouvrir la barrière",
+            "effect": {
+              "key": "open",
+              "value": true
+            }
+          },
+          {
+            "id": "close",
+            "label": "Fermer la barrière",
+            "effect": {
+              "key": "open",
+              "value": false
+            }
+          }
+        ],
+        "initialState": {
+          "open": false
+        }
+      },
+      {
+        "id": "bar-l0pgg",
+        "name": "Nouvelle barrière",
+        "kind": "barrier",
+        "category": "Mobilité",
+        "point": {
+          "x": 650,
+          "y": 270
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Badgeuse": "OK"
+        },
+        "actions": [
+          {
+            "id": "open",
+            "label": "Ouvrir la barrière",
+            "effect": {
+              "key": "open",
+              "value": true
+            }
+          },
+          {
+            "id": "close",
+            "label": "Fermer la barrière",
+            "effect": {
+              "key": "open",
+              "value": false
+            }
+          }
+        ],
+        "initialState": {
+          "open": false
+        }
+      },
+      {
+        "id": "bat-bdkxt",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 770,
+          "y": 410,
+          "w": 60,
+          "d": 120,
+          "h": 35
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-3wwdb",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 770,
+          "y": 590,
+          "w": 60,
+          "d": 160,
+          "h": 45
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-dso33",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 750,
+          "y": 750,
+          "w": 80,
+          "d": 80,
+          "h": 30
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": [],
+        "poly": [
+          {
+            "x": 750,
+            "y": 750
+          },
+          {
+            "x": 830,
+            "y": 750
+          },
+          {
+            "x": 830,
+            "y": 800
+          },
+          {
+            "x": 800,
+            "y": 830
+          },
+          {
+            "x": 750,
+            "y": 830
+          }
+        ]
+      },
+      {
+        "id": "bat-5mvvu",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 480,
+          "y": 770,
+          "w": 230,
+          "d": 60,
+          "h": 25
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": []
+      },
+      {
+        "id": "parc-h6i3m",
+        "name": "P. pompiers",
+        "kind": "parking",
+        "category": "Mobilité",
+        "footprint": {
+          "x": 480,
+          "y": 610,
+          "w": 160,
+          "d": 120,
+          "h": 0
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Occupation": "0 / 40"
+        },
+        "actions": []
+      },
+      {
+        "id": "bar-r6ift",
+        "name": "Nouvelle barrière",
+        "kind": "barrier",
+        "category": "Mobilité",
+        "point": {
+          "x": 480,
+          "y": 670
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Badgeuse": "OK"
+        },
+        "actions": [
+          {
+            "id": "open",
+            "label": "Ouvrir la barrière",
+            "effect": {
+              "key": "open",
+              "value": true
+            }
+          },
+          {
+            "id": "close",
+            "label": "Fermer la barrière",
+            "effect": {
+              "key": "open",
+              "value": false
+            }
+          }
+        ],
+        "initialState": {
+          "open": false
+        }
+      },
+      {
+        "id": "bat-7xikb",
+        "name": "",
+        "kind": "building",
+        "category": "Commerce",
+        "footprint": {
+          "x": 920,
+          "y": 500,
+          "w": 55,
+          "d": 170,
+          "h": 26
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Boutiques": "4",
+          "Conso élec.": "5,4 kW"
+        },
+        "actions": [
+          {
+            "id": "on",
+            "label": "Allumer",
+            "effect": {
+              "key": "on",
+              "value": true
+            }
+          },
+          {
+            "id": "off",
+            "label": "Éteindre",
+            "effect": {
+              "key": "on",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "bat-89r41",
+        "name": "",
+        "kind": "building",
+        "category": "Commerce",
+        "footprint": {
+          "x": 920,
+          "y": 710,
+          "w": 55,
+          "d": 170,
+          "h": 26
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Boutiques": "4",
+          "Conso élec.": "5,4 kW"
+        },
+        "actions": [
+          {
+            "id": "on",
+            "label": "Allumer",
+            "effect": {
+              "key": "on",
+              "value": true
+            }
+          },
+          {
+            "id": "off",
+            "label": "Éteindre",
+            "effect": {
+              "key": "on",
+              "value": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "bat-5qern",
+        "name": "",
+        "kind": "building",
+        "category": "Commerce",
+        "footprint": {
+          "x": 670,
+          "y": 920,
+          "w": 280,
+          "d": 90,
+          "h": 26
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Boutiques": "6",
+          "Conso élec.": "8,4 kW"
+        },
+        "actions": [
+          {
+            "id": "on",
+            "label": "Allumer",
+            "effect": {
+              "key": "on",
+              "value": true
+            }
+          },
+          {
+            "id": "off",
+            "label": "Éteindre",
+            "effect": {
+              "key": "on",
+              "value": false
+            }
+          }
+        ],
+        "poly": [
+          {
+            "x": 670,
+            "y": 920
+          },
+          {
+            "x": 760,
+            "y": 920
+          },
+          {
+            "x": 850,
+            "y": 920
+          },
+          {
+            "x": 950,
+            "y": 1010
+          },
+          {
+            "x": 670,
+            "y": 1010
+          }
+        ]
+      },
+      {
+        "id": "parc-kdwsw",
+        "name": "P. police",
+        "kind": "parking",
+        "category": "Mobilité",
+        "footprint": {
+          "x": 550,
+          "y": 510,
+          "w": 130,
+          "d": 50,
+          "h": 0
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "Occupation": "0 / 40"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-z9mwp",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 367,
+          "y": 147,
+          "w": 96,
+          "d": 96,
+          "h": 40
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": [],
+        "poly": [
+          {
+            "x": 463,
+            "y": 208
+          },
+          {
+            "x": 402,
+            "y": 243
+          },
+          {
+            "x": 367,
+            "y": 182
+          },
+          {
+            "x": 428,
+            "y": 147
+          }
+        ]
+      },
+      {
+        "id": "bat-tzidg",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 240,
+          "y": 90,
+          "w": 60,
+          "d": 50,
+          "h": 40
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-pi4zl",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 270,
+          "y": 20,
+          "w": 60,
+          "d": 50,
+          "h": 40
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-f1kbs",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 250,
+          "y": -30,
+          "w": 50,
+          "d": 40,
+          "h": 40
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-ckicf",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 350,
+          "y": -30,
+          "w": 50,
+          "d": 50,
+          "h": 40
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-1g15w",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 340,
+          "y": 30,
+          "w": 40,
+          "d": 50,
+          "h": 40
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-xgo05",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 796,
+          "y": 72,
+          "w": 30,
+          "d": 70,
+          "h": 40
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": [],
+        "poly": [
+          {
+            "x": 796,
+            "y": 72
+          },
+          {
+            "x": 826,
+            "y": 72
+          },
+          {
+            "x": 826,
+            "y": 142
+          },
+          {
+            "x": 796,
+            "y": 142
+          }
+        ]
+      },
+      {
+        "id": "bat-4e4n1",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 744,
+          "y": 145,
+          "w": 72,
+          "d": 70,
+          "h": 40
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": [],
+        "poly": [
+          {
+            "x": 744,
+            "y": 186
+          },
+          {
+            "x": 787,
+            "y": 145
+          },
+          {
+            "x": 816,
+            "y": 174
+          },
+          {
+            "x": 773,
+            "y": 215
+          }
+        ]
+      },
+      {
+        "id": "bat-xfkn7",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 573,
+          "y": 139,
+          "w": 84,
+          "d": 82,
+          "h": 40
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": [],
+        "poly": [
+          {
+            "x": 605,
+            "y": 139
+          },
+          {
+            "x": 657,
+            "y": 190
+          },
+          {
+            "x": 625,
+            "y": 221
+          },
+          {
+            "x": 573,
+            "y": 170
+          }
+        ]
+      },
+      {
+        "id": "bat-6ppz2",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": -20,
+          "y": 780,
+          "w": 220,
+          "d": 50,
+          "h": 25
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-7n9in",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": -20,
+          "y": 600,
+          "w": 40,
+          "d": 140,
+          "h": 40
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-5msw4",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": -11,
+          "y": 1060,
+          "w": 151,
+          "d": 116,
+          "h": 30
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": [],
+        "poly": [
+          {
+            "x": 10,
+            "y": 1060
+          },
+          {
+            "x": 140,
+            "y": 1100
+          },
+          {
+            "x": 125,
+            "y": 1176
+          },
+          {
+            "x": -11,
+            "y": 1140
+          }
+        ]
+      },
+      {
+        "id": "bat-aclbk",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 200,
+          "y": 1090,
+          "w": 140,
+          "d": 100,
+          "h": 20
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-jt2ic",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": -195,
+          "y": 955,
+          "w": 190,
+          "d": 170,
+          "h": 35
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": [],
+        "poly": [
+          {
+            "x": -161,
+            "y": 955
+          },
+          {
+            "x": -5,
+            "y": 997
+          },
+          {
+            "x": -39,
+            "y": 1125
+          },
+          {
+            "x": -195,
+            "y": 1083
+          }
+        ]
+      },
+      {
+        "id": "bat-jdl5s",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 680,
+          "y": 1090,
+          "w": 140,
+          "d": 100,
+          "h": 30
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-grh0l",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 540,
+          "y": 1090,
+          "w": 90,
+          "d": 100,
+          "h": 50
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": []
+      },
+      {
+        "id": "bat-z5bf3",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": -460,
+          "y": 920,
+          "w": 270,
+          "d": 90,
+          "h": 35
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": [],
+        "poly": [
+          {
+            "x": -440,
+            "y": 950
+          },
+          {
+            "x": -460,
+            "y": 920
+          },
+          {
+            "x": -190,
+            "y": 920
+          },
+          {
+            "x": -190,
+            "y": 1010
+          },
+          {
+            "x": -390,
+            "y": 1000
+          }
+        ]
+      },
+      {
+        "id": "bat-ns98n",
+        "name": "",
+        "kind": "building",
+        "category": "Divers",
+        "footprint": {
+          "x": 890,
+          "y": 1090,
+          "w": 250,
+          "d": 100,
+          "h": 30
+        },
+        "initialStatus": "ok",
+        "metrics": {
+          "État": "—"
+        },
+        "actions": [],
+        "poly": [
+          {
+            "x": 890,
+            "y": 1090
+          },
+          {
+            "x": 960,
+            "y": 1090
+          },
+          {
+            "x": 1030,
+            "y": 1090
+          },
+          {
+            "x": 1140,
+            "y": 1190
+          },
+          {
+            "x": 890,
+            "y": 1190
+          }
+        ]
+      }
+    ],
+    "zones": [
+      {
+        "id": "z-parc-central",
+        "type": "parc",
+        "x": 240,
+        "y": 520,
+        "w": 180,
+        "d": 76
+      }
+    ],
+    "roads": [
+      {
+        "id": "r-periph",
+        "name": "Boulevard périphérique",
+        "type": "tram",
+        "width": 58,
+        "points": [
+          {
+            "x": 870,
+            "y": -620
+          },
+          {
+            "x": 870,
+            "y": 820,
+            "smooth": false
+          },
+          {
+            "x": 830,
+            "y": 870,
+            "smooth": false
+          },
+          {
+            "x": -780,
+            "y": 870
+          }
+        ]
+      },
+      {
+        "id": "r-gauche",
+        "name": "Rue de la Centrale",
+        "type": "standard",
+        "width": 40,
+        "points": [
+          {
+            "x": 200,
+            "y": -641
+          },
+          {
+            "x": 200,
+            "y": 500
+          }
+        ]
+      },
+      {
+        "id": "r-centre",
+        "name": "Rue du Centre",
+        "type": "standard",
+        "width": 40,
+        "points": [
+          {
+            "x": 450,
+            "y": 430
+          },
+          {
+            "x": 450,
+            "y": 870
+          }
+        ]
+      },
+      {
+        "id": "r-diagonale",
+        "name": "Diagonale du Parc",
+        "type": "standard",
+        "width": 40,
+        "points": [
+          {
+            "x": -871,
+            "y": 820
+          },
+          {
+            "x": 620,
+            "y": 380
+          },
+          {
+            "x": 870,
+            "y": 380
+          }
+        ]
+      },
+      {
+        "id": "route-hw76b",
+        "name": "Route",
+        "type": "standard",
+        "width": 40,
+        "points": [
+          {
+            "x": 200,
+            "y": 280
+          },
+          {
+            "x": -600,
+            "y": -30
+          }
+        ]
+      },
+      {
+        "id": "route-0bk4o",
+        "name": "Route",
+        "type": "standard",
+        "width": 40,
+        "points": [
+          {
+            "x": 200,
+            "y": 220
+          },
+          {
+            "x": 293,
+            "y": 177,
+            "smooth": true
+          },
+          {
+            "x": 404,
+            "y": 107,
+            "smooth": true
+          },
+          {
+            "x": 463,
+            "y": -29
+          },
+          {
+            "x": 608,
+            "y": -642
+          }
+        ]
+      },
+      {
+        "id": "route-5nmdt",
+        "name": "Route",
+        "type": "standard",
+        "width": 40,
+        "points": [
+          {
+            "x": 620,
+            "y": 270
+          },
+          {
+            "x": 620,
+            "y": 380
+          }
+        ]
+      },
+      {
+        "id": "route-4e4fg",
+        "name": "Route",
+        "type": "pietonne",
+        "width": 15,
+        "points": [
+          {
+            "x": 550,
+            "y": -20
+          },
+          {
+            "x": 580,
+            "y": 70,
+            "smooth": true
+          },
+          {
+            "x": 640,
+            "y": 140,
+            "smooth": true
+          },
+          {
+            "x": 720,
+            "y": 210
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-2grij",
+        "name": "Route",
+        "type": "pietonne",
+        "width": 15,
+        "points": [
+          {
+            "x": 720,
+            "y": 230
+          },
+          {
+            "x": 720,
+            "y": 210,
+            "smooth": true
+          },
+          {
+            "x": 730,
+            "y": 170,
+            "smooth": true
+          },
+          {
+            "x": 770,
+            "y": 110,
+            "smooth": true
+          },
+          {
+            "x": 780,
+            "y": 30,
+            "smooth": true
+          },
+          {
+            "x": 840,
+            "y": 0
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-2kkix",
+        "name": "Route",
+        "type": "pietonne",
+        "width": 15,
+        "points": [
+          {
+            "x": 820,
+            "y": 240
+          },
+          {
+            "x": 430,
+            "y": 240
+          },
+          {
+            "x": 430,
+            "y": 300
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-kkjvs",
+        "name": "Route",
+        "type": "standard",
+        "width": 10,
+        "points": [
+          {
+            "x": 660,
+            "y": 260
+          },
+          {
+            "x": 630,
+            "y": 260
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-ia3oc",
+        "name": "Route",
+        "type": "standard",
+        "width": 10,
+        "points": [
+          {
+            "x": 600,
+            "y": 260
+          },
+          {
+            "x": 570,
+            "y": 260
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-lgc27",
+        "name": "Route",
+        "type": "pietonne",
+        "width": 25,
+        "points": [
+          {
+            "x": 490,
+            "y": 590
+          },
+          {
+            "x": 740,
+            "y": 590
+          },
+          {
+            "x": 740,
+            "y": 410
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-cdjyq",
+        "name": "Route",
+        "type": "pietonne",
+        "width": 25,
+        "points": [
+          {
+            "x": 740,
+            "y": 750
+          },
+          {
+            "x": 740,
+            "y": 600
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-o96ov",
+        "name": "Route",
+        "type": "pietonne",
+        "width": 15,
+        "points": [
+          {
+            "x": 730,
+            "y": 830
+          },
+          {
+            "x": 730,
+            "y": 750
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-nauv8",
+        "name": "Route",
+        "type": "pietonne",
+        "width": 15,
+        "points": [
+          {
+            "x": 480,
+            "y": 750
+          },
+          {
+            "x": 730,
+            "y": 750
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-dmvpt",
+        "name": "Route",
+        "type": "pietonne",
+        "width": 25,
+        "points": [
+          {
+            "x": 820,
+            "y": 560
+          },
+          {
+            "x": 750,
+            "y": 560
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-kkefh",
+        "name": "Route",
+        "type": "standard",
+        "width": 30,
+        "points": [
+          {
+            "x": 490,
+            "y": 650
+          },
+          {
+            "x": 460,
+            "y": 650
+          }
+        ]
+      },
+      {
+        "id": "route-b45nb",
+        "name": "Route",
+        "type": "standard",
+        "width": 40,
+        "points": [
+          {
+            "x": 690,
+            "y": 540
+          },
+          {
+            "x": 690,
+            "y": 390
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-0wbr2",
+        "name": "Route",
+        "type": "pietonne",
+        "width": 20,
+        "points": [
+          {
+            "x": 220,
+            "y": 830
+          },
+          {
+            "x": 220,
+            "y": 530
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-yi1ju",
+        "name": "Route",
+        "type": "pietonne",
+        "width": 10,
+        "points": [
+          {
+            "x": -70,
+            "y": 760
+          },
+          {
+            "x": 220,
+            "y": 760
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-o7s07",
+        "name": "Route",
+        "type": "pietonne",
+        "width": 10,
+        "points": [
+          {
+            "x": 220,
+            "y": 740
+          },
+          {
+            "x": 410,
+            "y": 740
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-8djqr",
+        "name": "Route",
+        "type": "standard",
+        "width": 20,
+        "points": [
+          {
+            "x": 180,
+            "y": 520
+          },
+          {
+            "x": 180,
+            "y": 590
+          }
+        ],
+        "dashed": false
+      },
+      {
+        "id": "route-etiuw",
+        "name": "Route",
+        "type": "standard",
+        "width": 40,
+        "points": [
+          {
+            "x": -540,
+            "y": 860
+          },
+          {
+            "x": -420,
+            "y": 1020,
+            "smooth": true
+          },
+          {
+            "x": -220,
+            "y": 1110,
+            "smooth": true
+          },
+          {
+            "x": 180,
+            "y": 1220,
+            "smooth": true
+          },
+          {
+            "x": 1260,
+            "y": 1230
+          }
+        ]
+      },
+      {
+        "id": "route-enw0c",
+        "name": "Route",
+        "type": "standard",
+        "width": 40,
+        "points": [
+          {
+            "x": 430,
+            "y": 1050
+          },
+          {
+            "x": 430,
+            "y": 1230
+          }
+        ]
+      },
+      {
+        "id": "route-cir5u",
+        "name": "Route",
+        "type": "standard",
+        "width": 40,
+        "points": [
+          {
+            "x": 110,
+            "y": 1050
+          },
+          {
+            "x": 1050,
+            "y": 1050
+          }
+        ]
+      },
+      {
+        "id": "route-w24ej",
+        "name": "Avenue 2×2 + tram",
+        "type": "tram",
+        "width": 54,
+        "points": [
+          {
+            "x": 840,
+            "y": 860
+          },
+          {
+            "x": 1470,
+            "y": 1420
+          }
+        ]
+      }
+    ],
+    "crosswalks": [],
+    "trees": [
+      {
+        "id": "tree-1",
+        "x": 540,
+        "y": 200
+      },
+      {
+        "id": "tree-2",
+        "x": 490,
+        "y": 180
+      },
+      {
+        "id": "tree-3",
+        "x": 385,
+        "y": 540
+      },
+      {
+        "id": "tree-4",
+        "x": 70,
+        "y": 760
+      },
+      {
+        "id": "tree-5",
+        "x": 170,
+        "y": 760
+      },
+      {
+        "id": "tree-6",
+        "x": 290,
+        "y": 550
+      },
+      {
+        "id": "tree-7",
+        "x": 350,
+        "y": 555
+      },
+      {
+        "id": "tree-8",
+        "x": 360,
+        "y": 515
+      },
+      {
+        "id": "tree-ewtr1",
+        "x": 520,
+        "y": 30
+      },
+      {
+        "id": "tree-5se13",
+        "x": 600,
+        "y": 0
+      },
+      {
+        "id": "tree-0inze",
+        "x": 680,
+        "y": 130
+      },
+      {
+        "id": "tree-eqz4f",
+        "x": 730,
+        "y": 100
+      },
+      {
+        "id": "tree-2lhd1",
+        "x": 220,
+        "y": 780
+      },
+      {
+        "id": "tree-wft3z",
+        "x": 220,
+        "y": 680
+      },
+      {
+        "id": "tree-yo4ah",
+        "x": 220,
+        "y": 580
+      },
+      {
+        "id": "tree-fheix",
+        "x": 150,
+        "y": 560
+      },
+      {
+        "id": "tree-bt9a6",
+        "x": 90,
+        "y": 570
+      }
+    ],
+    "intersections": {
+      "r-avenue|r-gauche|0": "feux",
+      "r-periph|r-pompiers|0": "stop",
+      "r-gauche|route-hw76b|0": "feux",
+      "r-gauche|route-0bk4o|0": "feux",
+      "r-diagonale|route-5nmdt|0": "feux",
+      "r-centre|r-diagonale|0": "feux",
+      "r-gauche|r-diagonale|0": "feux",
+      "r-periph|r-centre|0": "feux",
+      "r-periph|r-diagonale|0": "feux",
+      "route-etiuw|route-enw0c|0": "stop"
+    },
+    "modules": [
+      {
+        "x": 0,
+        "y": 0
+      }
+    ]
+  }
+}

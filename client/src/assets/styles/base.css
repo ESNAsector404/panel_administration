@@ -1,0 +1,174 @@
+/* ============================================
+   Sector 404 — Base & utilitaires
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
+  background-color: var(--bg);
+  /* Dégradé noir → violet de la charte */
+  background-image:
+    radial-gradient(1100px 700px at 88% -10%, rgba(94, 43, 255, 0.16), transparent 60%),
+    radial-gradient(900px 600px at -10% 110%, rgba(94, 43, 255, 0.1), transparent 55%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Quadrillage discret en arrière-plan (motif charte) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(242, 242, 242, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 242, 242, 0.025) 1px, transparent 1px);
+  background-size: 44px 44px;
+  z-index: 0;
+}
+
+/* Pages sans quadrillage (ex. administration) : le fond garde sa couleur et
+   ses dégradés, seule la grille est masquée (route meta `noGrid`). */
+body.no-grid::before {
+  display: none;
+}
+
+::selection {
+  background: var(--primary-500);
+  color: var(--s404-light);
+}
+
+a {
+  color: var(--primary-300);
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Scrollbars sombres */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* --- Utilitaires --- */
+
+.card {
+  background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-inset) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.card-title {
+  font-family: var(--font-title);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.title-ticking {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-card-2);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+}
+.dot--ok {
+  background: var(--ok);
+  box-shadow: 0 0 8px var(--ok);
+}
+.dot--warning {
+  background: var(--warn);
+  box-shadow: 0 0 8px var(--warn);
+}
+.dot--critical {
+  background: var(--critical);
+  box-shadow: 0 0 8px var(--critical);
+}
+.dot--offline {
+  background: var(--offline);
+}
+.dot--info {
+  background: var(--info);
+  box-shadow: 0 0 8px var(--info);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.pulse {
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0.15;
+  }
+}
+.blink {
+  animation: blink 1s steps(1) infinite;
+}

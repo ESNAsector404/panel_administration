@@ -1,0 +1,73 @@
+/* ============================================
+   Sector 404 — Design tokens (cf. design_system.md)
+   Charte #S404_01 : Dark #0A0908 / Primary #5E2BFF / Light #F2F2F2
+   ============================================ */
+
+:root {
+  /* --- Couleurs charte (source de vérité) --- */
+  --s404-dark: #0a0908;
+  --s404-primary: #5e2bff;
+  --s404-light: #f2f2f2;
+
+  /* --- Échelle de violets (dérivée du Primary) --- */
+  --primary-300: #8b66ff;
+  --primary-400: #7347ff;
+  --primary-500: #5e2bff;
+  --primary-600: #4a1fd6;
+  --primary-700: #3a18a8;
+  --primary-glow: rgba(94, 43, 255, 0.4);
+  --primary-soft: rgba(94, 43, 255, 0.12);
+
+  /* --- Surfaces (dérivées du Dark, teintées violet) --- */
+  --bg: #0a0908;
+  --bg-raise: #100e16;
+  --bg-card: #13111b;
+  --bg-card-2: #181523;
+  --bg-inset: #0d0c12;
+
+  /* --- Bordures --- */
+  --border: #242031;
+  --border-strong: #332e47;
+  --border-active: var(--primary-500);
+
+  /* --- Textes (dérivés du Light) --- */
+  --text: #f2f2f2;
+  --text-dim: #a8a4b6;
+  --text-faint: #6b6877;
+
+  /* --- États fonctionnels (sémantique supervision) --- */
+  --ok: #39d98a;
+  --warn: #ffb020;
+  --critical: #ff4d6d;
+  --offline: #6b6877;
+  --info: #4cc3ff;
+  --ok-soft: rgba(57, 217, 138, 0.12);
+  --warn-soft: rgba(255, 176, 32, 0.12);
+  --critical-soft: rgba(255, 77, 109, 0.14);
+  --offline-soft: rgba(107, 104, 119, 0.16);
+
+  /* --- Typographie --- */
+  --font-title: 'Ticking', 'Courier New', monospace;
+  --font-body: 'Satoshi', 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* --- Rayons --- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* --- Ombres --- */
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.45);
+
+  /* --- Espacements --- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+
+  /* --- Layout --- */
+  --header-h: 64px;
+  --sidebar-w: 232px;
+  --sidebar-w-slim: 68px;
+}

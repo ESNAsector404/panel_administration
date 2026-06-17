@@ -1,0 +1,65 @@
+/* ============================================
+   Sector 404 — Polices de la charte graphique
+   Ticking  : titres / chiffres clés
+   Satoshi  : corps de texte / labels / tableaux
+   ============================================ */
+
+@font-face {
+  font-family: 'Ticking';
+  src:
+    url('../fonts/Ticking/Ticking.otf') format('opentype'),
+    url('../fonts/Ticking/Ticking.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src:
+    url('../fonts/Satoshi/fonts/Satoshi-Light.woff2') format('woff2'),
+    url('../fonts/Satoshi/fonts/Satoshi-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src:
+    url('../fonts/Satoshi/fonts/Satoshi-Regular.woff2') format('woff2'),
+    url('../fonts/Satoshi/fonts/Satoshi-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src:
+    url('../fonts/Satoshi/fonts/Satoshi-Medium.woff2') format('woff2'),
+    url('../fonts/Satoshi/fonts/Satoshi-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src:
+    url('../fonts/Satoshi/fonts/Satoshi-Bold.woff2') format('woff2'),
+    url('../fonts/Satoshi/fonts/Satoshi-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src:
+    url('../fonts/Satoshi/fonts/Satoshi-Black.woff2') format('woff2'),
+    url('../fonts/Satoshi/fonts/Satoshi-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
