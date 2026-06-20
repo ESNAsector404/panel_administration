@@ -1,0 +1,7 @@
+services:
+  frontend:
+    build: .
+    container_name: sector404-administration-front
+    restart: unless-stopped
+    ports:
+      - "80:80"
