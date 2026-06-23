@@ -12,6 +12,7 @@ import invitationsRoutes from './routes/invitations.routes.js'
 import meRoutes from './routes/me.routes.js'
 import rolesRoutes from './routes/roles.routes.js'
 import usersRoutes from './routes/users.routes.js'
+import raspberrysRoutes from './routes/raspberrysRoutes.route.js'
 
 export function createApp() {
   const app = express()
@@ -38,6 +39,7 @@ export function createApp() {
   app.use('/api/city', cityRoutes)
   app.use('/api/events', eventsRoutes)
   app.use('/api/invitations', invitationsRoutes)
+  app.use('/api/raspberrys', raspberrysRoutes)
 
   // 404 API
   app.use((_req, _res, next) => next(new HttpError(404, 'Ressource introuvable', 'not_found')))
