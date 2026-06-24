@@ -18,6 +18,16 @@ des charges §3.1).
 
 ## Démarrage
 
+### Avec docker
+```bash
+docker compose up --build -d
+
+# On init la base une fois les conteneurs lancé
+docker exec sector404-administration-api npm run seed
+```
+
+
+### A la main
 ```bash
 # 1. MongoDB (ou une instance locale déjà lancée)
 docker compose up -d
