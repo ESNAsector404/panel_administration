@@ -12,7 +12,7 @@ import invitationsRoutes from './routes/invitations.routes.js'
 import meRoutes from './routes/me.routes.js'
 import rolesRoutes from './routes/roles.routes.js'
 import usersRoutes from './routes/users.routes.js'
-import raspberrysRoutes from './routes/raspberrysRoutes.route.js'
+import raspberrysRoutes from './routes/raspberrys.route.js'
 
 export function createApp() {
   const app = express()

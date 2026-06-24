@@ -22,17 +22,17 @@ const DEFAULT_TIMEOUT_MS = 2000;
  * @returns {Config}
  */
 export function getConfig() {
-  const configPath =
-    process.env.CONFIG_PATH ??
-    path.join(__dirname, '../config/raspberrys.yaml');
+    const configPath =
+        process.env.CONFIG_PATH ??
+        path.join(__dirname, '../config/raspberrys.yaml');
 
-  try {
-    const file = fs.readFileSync(configPath, 'utf8');
-    return YAML.parse(file);
-  } catch (error) {
-    console.error('Error reading config file:', error);
-    throw error;
-  }
+    try {
+        const file = fs.readFileSync(configPath, 'utf8');
+        return YAML.parse(file);
+    } catch (error) {
+        console.error('Error reading config file:', error);
+        throw error;
+    }
 }
 
 /**
@@ -43,14 +43,14 @@ export function getConfig() {
  * @returns {Promise<Response>}
  */
 async function fetchWithTimeout(url, options = {}, timeout = DEFAULT_TIMEOUT_MS) {
-  const controller = new AbortController();
-  const id = setTimeout(() => controller.abort(), timeout);
-  try {
-    const response = await fetch(url, { ...options, signal: controller.signal });
-    return response;
-  } finally {
-    clearTimeout(id);
-  }
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+    try {
+        const response = await fetch(url, { ...options, signal: controller.signal });
+        return response;
+    } finally {
+        clearTimeout(id);
+    }
 }
 
 /**
@@ -59,10 +59,10 @@ async function fetchWithTimeout(url, options = {}, timeout = DEFAULT_TIMEOUT_MS)
  * @param {string} host
  */
 async function checkHealth(host) {
-  const res = await fetchWithTimeout(`${host}/health`);
-  if (!res.ok) {
-    throw new Error(`Health check failed for ${host}: ${res.status} ${res.statusText}`);
-  }
+    const res = await fetchWithTimeout(`${host}/health`);
+    if (!res.ok) {
+        throw new Error(`Health check failed for ${host}: ${res.status} ${res.statusText}`);
+    }
 }
 
 /**
@@ -71,26 +71,26 @@ async function checkHealth(host) {
  * @returns {Promise<PiResult>}
  */
 async function getPI(host) {
-  try {
-    await checkHealth(host);
+    try {
+        await checkHealth(host);
 
-    const res = await fetchWithTimeout(`${host}/conf`);
-    if (!res.ok) {
-      throw new Error(`Failed to fetch config from ${host}: ${res.statusText}`);
+        const res = await fetchWithTimeout(`${host}/conf`);
+        if (!res.ok) {
+            throw new Error(`Failed to fetch config from ${host}: ${res.statusText}`);
+        }
+
+        const conf = await res.json();
+        return {
+            status: 'online',
+            components: conf || {},
+        };
+    } catch (e) {
+        return {
+            status: 'offline',
+            components: {},
+            error: e.name === 'AbortError' ? `Timeout (>${DEFAULT_TIMEOUT_MS}ms)` : e.message,
+        };
     }
-
-    const conf = await res.json();
-    return {
-      status: 'online',
-      components: conf || {},
-    };
-  } catch (e) {
-    return {
-      status: 'offline',
-      components: {},
-      error: e.name === 'AbortError' ? `Timeout (>${DEFAULT_TIMEOUT_MS}ms)` : e.message,
-    };
-  }
 }
 
 /**
@@ -98,11 +98,52 @@ async function getPI(host) {
  * @returns {Promise<Record<string, PiResult>>}
  */
 export async function getAllRaspberrys() {
-  const config = getConfig();
+    const config = getConfig();
 
-  const entries = await Promise.all(
-    config.raspberrys.map(async ({ id, host }) => [id, await getPI(host)])
-  );
+    const entries = await Promise.all(
+        config.raspberrys.map(async ({ id, host }) => [id, await getPI(host)])
+    );
 
-  return Object.fromEntries(entries);
+    return Object.fromEntries(entries);
+}
+
+export async function ledAction(raspberryId, ledId, action) {
+    const ACTIONS = ['on', 'off', 'toggle'];
+    if (!ACTIONS.includes(action)) {
+        throw new Error(`Invalid action: ${action}. Must be one of ${ACTIONS.join(', ')}`);
+    }
+
+    const config = getConfig();
+    const raspberry = config.raspberrys.find(r => r.id === raspberryId);
+    if (!raspberry) {
+        throw new Error(`Raspberry with id ${raspberryId} not found`);
+    }
+
+    const url = `${raspberry.host}/led/${ledId}/${action}`;
+    const res = await fetchWithTimeout(url, { method: 'GET' });
+    if (!res.ok) {
+        throw new Error(`Failed to perform action on LED: ${res.statusText}`);
+    }
+
+    return await res.json();
+}
+
+export async function servoAction(raspberryId, servoId, angle) {
+    if (0 > angle || angle > 180) {
+        throw new Error(`Invalid angle: ${angle}. Must be between 0 and 180`);
+    }
+
+    const config = getConfig();
+    const raspberry = config.raspberrys.find(r => r.id === raspberryId);
+    if (!raspberry) {
+        throw new Error(`Raspberry with id ${raspberryId} not found`);
+    }
+
+    const url = `${raspberry.host}/servo/${servoId}/setAngle/${angle}`;
+    const res = await fetchWithTimeout(url, { method: 'GET' });
+    if (!res.ok) {
+        throw new Error(`Failed to perform action on Servo: ${res.statusText}`);
+    }
+
+    return await res.json();
 }

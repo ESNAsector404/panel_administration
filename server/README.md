@@ -77,3 +77,13 @@ d'administration (`/administration`).
 | POST    | `/api/roles`           | `roles:manage`   | Crée un rôle                  |
 | PATCH   | `/api/roles/:id`       | `roles:manage`   | Modifie un rôle               |
 | DELETE  | `/api/roles/:id`       | `roles:manage`   | Supprime un rôle non protégé  |
+
+
+## Endpoints lié aux composants
+
+| Méthode | Route                  | Permission       | description                          |
+| ------- | ---------------------- | ---------------- | ----------------------------- |
+| GET     | `/api/raspberrys/`      | authentifié       | retourne la conf des raspberry|
+| GET     | `/api/raspberrys/components`    | authentifié       | Retourne les raspberry en ligne ou non avec leurs composants associés     |
+| GET     | `/api/raspberrys/components/led/<raspi_ID>/<led_ID>/[on, off, toggle]`     | authentifié       | permet d'effectuer des actions sur une LED                   |
+| GET     | `/api/raspberrys/components/servo/<raspi_ID>/<servo_ID>/<angle>`         | authentifié       | permet d'effectuer des actions sur un servomoteur|
